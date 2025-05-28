@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shamri Store </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* الخطوط الأساسية */
+    body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    }
+
+
+   
+    /* تدرج ألوان احترافي */
+    .gradient-text {
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+
+    /* الشعار */
+    .navbar-brand img {
+      border-radius: 50%;
+      border: 3px solid #ffc107;
+      box-shadow: 0 0 12px #ffc107aa;
+      transition: transform 0.3s ease;
+    }
+    .navbar-brand img:hover {
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    /* الخلفية الرئيسية - تم التعديل هنا */
+    .hero {
+  height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    display: flex;
+    justify-content: center;ء
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    }
+
+    /* ظل ووميض خلف النص */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255, 193, 7, 0.3), transparent 70%);
+      animation: pulseGlow 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes pulseGlow {
+      0%, 100% {opacity: 0.6;}
+      50% {opacity: 1;}
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      z-index: 1;
+      text-shadow:
+        0 0 5px #ffc107,
+        0 0 10px #ffc107,
+        0 0 20px #ff9800,
+        0 0 30px #ff9800;
+      animation: glowText 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowText {
+      from {
+        text-shadow:
+          0 0 5px #ffc107,
+          0 0 10px #ffc107,
+          0 0 20px #ff9800,
+          0 0 30px #ff9800;
+      }
+      to {
+        text-shadow:
+          0 0 20px #ffc107,
+          0 0 30px #ff9800,
+          0 0 40px #ff5722,
+          0 0 50px #ff5722;
+      }
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #ffecb3;
+      text-shadow: 0 0 10px #ff9800aa;
+      z-index: 1;
+    }
+
+    /* الأزرار الجذابة */
+    .btn-outline-glow {
+      position: relative;
+      color: #ffc107;
+      border: 2px solid #ffc107;
+      transition: color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 700;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .btn-outline-glow::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, #ffc107, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+      filter: blur(15px);
+    }
+    .btn-outline-glow:hover {
+      color: #fff;
+      box-shadow: 0 0 15px #ffc107;
+      border-color: #fff;
+    }
+    .btn-outline-glow:hover::before {
+      opacity: 1;
+    }
+
+    /* الأقسام */
+    section {
+      padding: 4rem 0;
+    }
+
+    /* العناوين */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      text-align: center;
+      background: linear-gradient(90deg, #ff6a00, #ee0979);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 5px #ee0979aa;
+    }
+
+    /* البطاقات */
+    .card {
+      background: linear-gradient(145deg, #202c44, #1b2336);
+      border-radius: 20px;
+      border: none;
+      box-shadow:
+        0 4px 15px rgba(255, 193, 7, 0.3),
+        inset 0 0 8px rgba(255, 193, 7, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #ffc107;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow:
+        0 8px 30px rgba(255, 193, 7, 0.7),
+        inset 0 0 20px rgba(255, 193, 7, 0.5);
+      color: #fff;
+    }
+    .card-body ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card-body ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #ffc10733;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      transition: color 0.3s ease;
+    }
+    .card-body ul li:hover {
+      color: #ff9800;
+      cursor: default;
+    }
+
+    /* روابط مواقع التواصل */
+    .social-links a {
+      font-size: 1.5rem;
+      margin: 0 15px;
+      color: #ffc107;
+      transition: color 0.4s ease, transform 0.3s ease;
+      text-shadow:
+        0 0 5px #ffc107,
+        0 0 10px #ff9800;
+    }
+    .social-links a:hover {
+      color: #fff;
+      transform: scale(1.3);
+      text-shadow:
+        0 0 10px #ff5722,
+        0 0 20px #ff5722;
+    }
+
+    /* الفوتر */
+    footer {
+      background: #0d1117;
+      padding: 2rem 0;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      color: #ffc107aa;
+      text-shadow: 0 0 8px #ffc10744;
+    }
+
+    /* استجابة الهاتف */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .social-links a {
+        font-size: 1.2rem;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="photo_2025-05-28_17-26-45.jpg" alt="شعار Shamri Store" width="50" height="50" class="me-3" />
+        <span class="gradient-text">Shamri Store</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="تبديل التنقل">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto fs-5 fw-bold">
+          <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">الخدمات</a></li>
+          <li class="nav-item"><a class="nav-link" href="#prices">الأسعار</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero text-white">
+    <div>
+      <h1>مرحباً بك في <span class="gradient-text">Shamri Store</span></h1>
+      <p class="lead">خدمات احترافية لجميع وسائل التواصل الاجتماعي بأروع شكل!</p>
+    </div>
+  </header>
+
+  <section id="about" class="container py-5 text-center">
+    <h2 class="section-title">من نحن</h2>
+    <p class="fs-5 px-3 mx-auto" style="max-width: 900px;">
+      ✨ <span class="gradient-text">Shamri Store</span> ✨ هو المتجر الأول في العراق المختص بتقديم خدمات السوشيال ميديا بطريقة آمنة، سريعة، وبضمان حقيقي 💯.<br />
+      نقدم لك خدمات احترافية تشمل: توثيق الحسابات، رشق المتابعين، شحن الألعاب (ببجي - لودو)، بطاقات رقمية (آيتونز)، اشتراكات نتفلكس، بلايستيشن، كيم باس، وأكثر!<br />
+      نخدمك بالجودة والسعر المناسب من خلال فريق دعم متوفر دائماً لتلبية احتياجاتك ✅
+    </p>
+  </section>
+
+  <section id="services" class="container py-5 text-center">
+    <h2 class="section-title">خدماتنا</h2>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <i class="fa-solid fa-user-check fa-3x mb-3 text-warning"></i>
+          <h5 class="mb-3">توثيق حسابات</h5>
+          <p>توثيق سريع وآمن لجميع حساباتك على تيليجرام، إنستقرام، تويتر، فيسبوك وغيرها.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <i class="fa-solid fa-users fa-3x mb-3 text-warning"></i>
+          <h5 class="mb-3">رشق متابعين</h5>
+          <p>زيادة متابعينك على منصات متعددة مثل إنستقرام، تيك توك، تليجرام، فيسبوك بسرعة وفعالية.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <i class="fa-solid fa-gamepad fa-3x mb-3 text-warning"></i>
+          <h5 class="mb-3">شحن الألعاب</h5>
+          <p>شحن شدات ببجي، جواهر لودو، بطاقات رقمية مثل آيتونز وبلايستيشن.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prices" class="container py-5 text-center">
+    <h2 class="section-title">الأسعار</h2>
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <h5 class="mb-3">باقة الفضية</h5>
+          <ul>
+            <li>توثيق 3 حسابات</li>
+            <li>500 متابع إنستقرام</li>
+            <li>شحن 10 $ آيتونز</li>
+            <li>دعم فني 12 ساعة</li>
+            <li>السعر: 30$</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <h5 class="mb-3">باقة الذهبية</h5>
+          <ul>
+            <li>توثيق 7 حسابات</li>
+            <li>1500 متابع إنستقرام</li>
+            <li>شحن 30 $ آيتونز</li>
+            <li>دعم فني 24 ساعة</li>
+            <li>السعر: 70$</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 shadow-lg">
+          <h5 class="mb-3">باقة البلاتينية</h5>
+          <ul>
+            <li>توثيق غير محدود</li>
+            <li>5000 متابع إنستقرام</li>
+            <li>شحن 100 $ آيتونز</li>
+            <li>دعم فني 24/7</li>
+            <li>السعر: 200$</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container py-5 text-center">
+    <h2 class="section-title">تواصل معنا</h2>
+    <p class="mb-4 fs-5">هل لديك استفسار أو ترغب بالتعامل معنا؟ لا تتردد بالتواصل معنا مباشرة عبر مواقعنا 👇</p>
+
+    <div class="mt-4">
+      <h5 class="text-warning mb-3">تواصل مباشر عبر:</h5>
+      <a href="https://www.instagram.com/_m_aqp" target="_blank" class="btn btn-outline-light mx-2">
+        <i class="fab fa-instagram"></i> إنستقرام
+      </a>
+      <a href="https://wa.me/9647877239312" target="_blank" class="btn btn-outline-success mx-2">
+        <i class="fab fa-whatsapp"></i> واتساب
+      </a>
+      <a href="https://t.me/SHAMRI1" target="_blank" class="btn btn-outline-primary mx-2">
+        <i class="fab fa-telegram"></i> تيليجرام
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Shamri Store. جميع الحقوق محفوظة.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
